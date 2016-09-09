@@ -16,8 +16,38 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4pp-kS-v8r">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="dOr-Xt-DKy"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="u9v-xN-YeI"/>
+                                </connections>
+                            </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="KY9-TP-nBR">
+                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="4jS-VA-7eW"/>
+                                </connections>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="4pp-kS-v8r" secondAttribute="bottom" id="7tZ-Va-BwQ"/>
+                            <constraint firstItem="4pp-kS-v8r" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="BpP-ih-kDr"/>
+                            <constraint firstItem="KY9-TP-nBR" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Ot3-NC-BhX"/>
+                            <constraint firstAttribute="trailing" secondItem="KY9-TP-nBR" secondAttribute="trailing" id="Sx3-ji-1dJ"/>
+                            <constraint firstItem="4pp-kS-v8r" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="VWf-27-3gu"/>
+                            <constraint firstAttribute="trailing" secondItem="4pp-kS-v8r" secondAttribute="trailing" id="X3O-Qx-Bzj"/>
+                            <constraint firstItem="KY9-TP-nBR" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="tkC-3E-ca4"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="searchBar" destination="KY9-TP-nBR" id="eLW-QA-zeb"/>
+                        <outlet property="tableView" destination="4pp-kS-v8r" id="YfR-DQ-fCM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
