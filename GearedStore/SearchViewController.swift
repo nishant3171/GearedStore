@@ -14,13 +14,24 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     
-    var searchStrings = [SearchStore]()
+    var searchResults = [SearchStore]()
     var hasSearched = false
+    
+    struct tableViewCellIdentifiers {
+        static let searchResultCell = "SearchResultCell"
+        static let nothingFoundCell = "NothingFoundCell"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.contentInset = UIEdgeInsets(top: 44.0, left: 0.0, bottom: 0.0, right: 0.0)
+        tableView.rowHeight = 90.0
+        
+        var cellNib = UINib(nibName: tableViewCellIdentifiers.searchResultCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: tableViewCellIdentifiers.searchResultCell)
+        cellNib = UINib(nibName: tableViewCellIdentifiers.nothingFoundCell, bundle: nil)
+        tableView.registerNib(cellNib, forCellReuseIdentifier: tableViewCellIdentifiers.nothingFoundCell)
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,15 +46,15 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
-        searchStrings = [SearchStore]()
+        searchResults = [SearchStore]()
         hasSearched = true
         
         if searchBar.text != "justin bieber" {
         for i in 0...2 {
-           let searchString = SearchStore()
-            searchString.name = String(format: "Fake results %d for", i)
-            searchString.artistName = searchBar.text!
-            searchStrings.append(searchString)
+           let searchResult = SearchStore()
+            searchResult.name = String(format: "Fake results %d for", i)
+            searchResult.artistName = searchBar.text!
+            searchResults.append(searchResult)
         }
         }
         tableView.reloadData()
@@ -59,32 +70,24 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if !hasSearched {
             return 0
-        }else if searchStrings.count == 0 {
+        }else if searchResults.count == 0 {
         return 1
         } else {
-        return searchStrings.count
+        return searchResults.count
         }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cellIdentifier = "SearchResultCell"
-        var cell: UITableViewCell! = tableView.dequeueReusableCellWithIdentifier(cellIdentifier)
-        
-        if cell == nil {
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: cellIdentifier)
-        }
-        
-        
-        if searchStrings.count == 0 {
-            cell.textLabel?.text = "Nothing found"
-            cell.detailTextLabel?.text = ""
+        if searchResults.count == 0 {
+            return tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifiers.nothingFoundCell, forIndexPath: indexPath)
         } else {
-        let searchString = searchStrings[indexPath.row]
-        cell.textLabel?.text = searchString.name
-        cell.detailTextLabel?.text = searchString.artistName
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(tableViewCellIdentifiers.searchResultCell, forIndexPath: indexPath) as! SearchResultCell
+        let searchResult = searchResults[indexPath.row]
+        cell.nameLabel?.text = searchResult.name
+        cell.artistNameLabel?.text = searchResult.artistName
         return cell
+        }
     }
 }
 
@@ -93,7 +96,7 @@ extension SearchViewController: UITableViewDelegate {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
     }
     func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
-        if searchStrings.count == 0 {
+        if searchResults.count == 0 {
             return nil
         } else {
             return indexPath
