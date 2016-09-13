@@ -53,27 +53,13 @@ class SearchViewController: UIViewController {
 
     func urlWithSearchString(searchString: String) -> NSURL {
         let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", escapedSearchString)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchString)
         let url = NSURL(string: urlString)
         return url!
     }
 
-    func performStoreRequest(url: NSURL) -> String? {
-        do {
-            return try String(contentsOfURL: url, encoding: NSUTF8StringEncoding)
-        } catch {
-            print("Download error: \(error)")
-            return nil
-        }
+    func parseJson(data: NSData) -> [String: AnyObject]? {
     
-    }
-
-    func parseJson(jsonString: String) -> [String: AnyObject]? {
-    
-        guard let data = jsonString.dataUsingEncoding(NSUTF8StringEncoding)
-            else {
-                return nil
-            }
         do {
             return try NSJSONSerialization.JSONObjectWithData(data, options: []) as? [String: AnyObject]
         } catch {
@@ -231,17 +217,15 @@ extension SearchViewController: UISearchBarDelegate {
             hasSearched = true
             searchResults = [SearchStore]()
             
-            
-            let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
-            
-            dispatch_async(queue) {
-                let url = urlWithSearchString(searchBar.text!)
-                
-                if let jsonString = performStoreRequest(url) {
-                    
-                    if let dictionary = parseJson(jsonString) {
+            let url = urlWithSearchString(searchBar.text!)
+            let session = NSURLSession.sharedSession()
+            let dataTask = session.dataTaskWithURL(url, completionHandler: { (data, response, error) in
+                if let error = error {
+                    print("Failure \(error).")
+                } else if let responseCode = response as? NSHTTPURLResponse where responseCode.statusCode == 200 {
+                    if let data = data, dictionary = parseJson(data) {
                         self.searchResults = parseDictionary(dictionary)
-                        self.searchResults.sortInPlace{ $0 < $1}
+                        self.searchResults.sortInPlace(<)
                         
                         dispatch_async(dispatch_get_main_queue()) {
                             self.isLoading = false
@@ -249,12 +233,33 @@ extension SearchViewController: UISearchBarDelegate {
                         }
                         return
                     }
-            }
-            
-                dispatch_async(dispatch_get_main_queue()) {
-                    showNetworkError(self)
+                    dispatch_async(dispatch_get_main_queue()) {
+                        self.hasSearched = false
+                        self.isLoading = false
+                        self.tableView.reloadData()
+                        showNetworkError(self)
+                    }
+                } else {
+                    print("Error \(response)")
                 }
-            }
+            })
+            
+            dataTask.resume()
+                
+                
+                
+//                if let jsonString = performStoreRequest(url) {
+//                    
+//                    if let dictionary = parseJson(jsonString) {
+//                        self.searchResults = parseDictionary(dictionary)
+//                        self.searchResults.sortInPlace{ $0 < $1}
+//                        
+//
+//                        return
+//                    }
+//            }
+            
+//            }
         }
     }
     
