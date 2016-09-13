@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     var searchResults = [SearchStore]()
     var hasSearched = false
     var isLoading = false
+    var dataTask: NSURLSessionDataTask?
     
     struct tableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -211,6 +212,7 @@ extension SearchViewController: UISearchBarDelegate {
         if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
+            dataTask?.cancel()
             isLoading = true
             tableView.reloadData()
             
@@ -219,9 +221,9 @@ extension SearchViewController: UISearchBarDelegate {
             
             let url = urlWithSearchString(searchBar.text!)
             let session = NSURLSession.sharedSession()
-            let dataTask = session.dataTaskWithURL(url, completionHandler: { (data, response, error) in
-                if let error = error {
-                    print("Failure \(error).")
+            dataTask = session.dataTaskWithURL(url, completionHandler: { (data, response, error) in
+                if let error = error where error.code == -999 {
+                    return
                 } else if let responseCode = response as? NSHTTPURLResponse where responseCode.statusCode == 200 {
                     if let data = data, dictionary = parseJson(data) {
                         self.searchResults = parseDictionary(dictionary)
@@ -244,22 +246,7 @@ extension SearchViewController: UISearchBarDelegate {
                 }
             })
             
-            dataTask.resume()
-                
-                
-                
-//                if let jsonString = performStoreRequest(url) {
-//                    
-//                    if let dictionary = parseJson(jsonString) {
-//                        self.searchResults = parseDictionary(dictionary)
-//                        self.searchResults.sortInPlace{ $0 < $1}
-//                        
-//
-//                        return
-//                    }
-//            }
-            
-//            }
+            dataTask?.resume()
         }
     }
     
