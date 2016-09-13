@@ -53,7 +53,7 @@ class SearchViewController: UIViewController {
 
     func urlWithSearchString(searchString: String) -> NSURL {
         let escapedSearchString = searchString.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
-        let urlString = String(format: "https://itunes.apple.com/search?term=%@", escapedSearchString)
+        let urlString = String(format: "https://itunes.apple.com/search?term=%@&limit=200", escapedSearchString)
         let url = NSURL(string: urlString)
         return url!
     }
@@ -222,34 +222,35 @@ func parseAudioBook(dictionary: [String: AnyObject]) -> SearchStore {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-        if !(searchBar.text!.isEmpty) {
+        if !searchBar.text!.isEmpty {
             searchBar.resignFirstResponder()
             
             isLoading = true
             tableView.reloadData()
             
-            searchResults = [SearchStore]()
             hasSearched = true
+            searchResults = [SearchStore]()
+            
             
             let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
             
             dispatch_async(queue) {
+                let url = urlWithSearchString(searchBar.text!)
                 
-            }
-            let url = urlWithSearchString(searchBar.text!)
-            
-            if let jsonString = performStoreRequest(url) {
-                
-                if let dictionary = parseJson(jsonString) {
-                    searchResults = parseDictionary(dictionary)
-                    searchResults.sortInPlace{ $0 < $1}
-                
-                    dispatch_async(dispatch_get_main_queue()) {
-                        self.isLoading = false
-                        self.tableView.reloadData()
+                if let jsonString = performStoreRequest(url) {
+                    
+                    if let dictionary = parseJson(jsonString) {
+                        self.searchResults = parseDictionary(dictionary)
+                        self.searchResults.sortInPlace{ $0 < $1}
+                        
+                        dispatch_async(dispatch_get_main_queue()) {
+                            self.isLoading = false
+                            self.tableView.reloadData()
+                        }
+                        return
                     }
-                    return
-                }
+            }
+            
                 dispatch_async(dispatch_get_main_queue()) {
                     showNetworkError(self)
                 }
