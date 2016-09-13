@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="LoadingCell" id="N3d-rl-g07">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="90"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="N3d-rl-g07" id="lrZ-2Y-sqf">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="46u-N0-1z5">
+                        <rect key="frame" x="96.5" y="14" width="127" height="61"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LCF-Ng-dyq">
+                                <rect key="frame" x="20" y="20" width="68" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView opaque="NO" tag="100" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Os5-Fj-bQU">
+                                <rect key="frame" x="88" y="21" width="20" height="20"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Os5-Fj-bQU" firstAttribute="leading" secondItem="LCF-Ng-dyq" secondAttribute="trailing" id="4qd-0f-1p8"/>
+                            <constraint firstItem="LCF-Ng-dyq" firstAttribute="top" secondItem="46u-N0-1z5" secondAttribute="top" constant="20" id="5go-b9-Mn3"/>
+                            <constraint firstAttribute="bottom" secondItem="LCF-Ng-dyq" secondAttribute="bottom" constant="20" id="FfP-RB-DkH"/>
+                            <constraint firstItem="Os5-Fj-bQU" firstAttribute="top" secondItem="46u-N0-1z5" secondAttribute="top" constant="21" id="Ita-Tk-Xok"/>
+                            <constraint firstAttribute="bottom" secondItem="Os5-Fj-bQU" secondAttribute="bottom" constant="20" id="Qmz-Ag-Tt5"/>
+                            <constraint firstAttribute="trailing" secondItem="Os5-Fj-bQU" secondAttribute="trailing" constant="19" id="gtu-dS-ow4"/>
+                            <constraint firstItem="LCF-Ng-dyq" firstAttribute="leading" secondItem="46u-N0-1z5" secondAttribute="leading" constant="20" id="n6b-qh-hr6"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="46u-N0-1z5" firstAttribute="centerX" secondItem="lrZ-2Y-sqf" secondAttribute="centerX" id="RDV-ud-mQf"/>
+                    <constraint firstItem="46u-N0-1z5" firstAttribute="centerY" secondItem="lrZ-2Y-sqf" secondAttribute="centerY" id="eM1-UK-oFN"/>
+                </constraints>
+            </tableViewCellContentView>
+            <point key="canvasLocation" x="383" y="434"/>
+        </tableViewCell>
+    </objects>
+</document>
