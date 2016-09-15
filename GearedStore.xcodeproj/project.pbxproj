@@ -11,7 +11,6 @@
 		F40B633E1D82A416008AE6DB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F40B633D1D82A416008AE6DB /* SearchViewController.swift */; };
 		F40B63411D82A416008AE6DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B633F1D82A416008AE6DB /* Main.storyboard */; };
 		F40B63431D82A416008AE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B63421D82A416008AE6DB /* Assets.xcassets */; };
-		F40B63461D82A416008AE6DB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B63441D82A416008AE6DB /* LaunchScreen.storyboard */; };
 		F41C91461D87B62A005CE6A2 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41C91451D87B62A005CE6A2 /* LoadingCell.xib */; };
 		F46C97CB1D82CDB800D23708 /* SearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C97CA1D82CDB800D23708 /* SearchStore.swift */; };
 		F46C97CD1D82E38400D23708 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46C97CC1D82E38400D23708 /* SearchResultCell.xib */; };
@@ -25,7 +24,6 @@
 		F40B633D1D82A416008AE6DB /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		F40B63401D82A416008AE6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F40B63421D82A416008AE6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F40B63451D82A416008AE6DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F40B63471D82A416008AE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41C91451D87B62A005CE6A2 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		F46C97CA1D82CDB800D23708 /* SearchStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStore.swift; sourceTree = "<group>"; };
@@ -104,7 +102,6 @@
 				F4AE63341D83C03A0083206C /* NothingFoundCell.xib */,
 				F46C97CC1D82E38400D23708 /* SearchResultCell.xib */,
 				F40B633F1D82A416008AE6DB /* Main.storyboard */,
-				F40B63441D82A416008AE6DB /* LaunchScreen.storyboard */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -146,11 +143,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = MLBNP;
 				TargetAttributes = {
 					F40B63371D82A416008AE6DB = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = G7TV7283LG;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -177,7 +176,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F40B63461D82A416008AE6DB /* LaunchScreen.storyboard in Resources */,
 				F40B63431D82A416008AE6DB /* Assets.xcassets in Resources */,
 				F41C91461D87B62A005CE6A2 /* LoadingCell.xib in Resources */,
 				F46C97CD1D82E38400D23708 /* SearchResultCell.xib in Resources */,
@@ -211,14 +209,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		F40B63441D82A416008AE6DB /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F40B63451D82A416008AE6DB /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -236,8 +226,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -281,8 +273,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -301,6 +295,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -309,10 +304,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G7TV7283LG;
 				INFOPLIST_FILE = GearedStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MLBNP.GearedStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -320,10 +318,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = G7TV7283LG;
 				INFOPLIST_FILE = GearedStore/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.MLBNP.GearedStore;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
