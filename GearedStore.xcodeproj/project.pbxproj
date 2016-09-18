@@ -16,6 +16,7 @@
 		F46C97CD1D82E38400D23708 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46C97CC1D82E38400D23708 /* SearchResultCell.xib */; };
 		F46C97CF1D82E9C100D23708 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C97CE1D82E9C100D23708 /* SearchResultCell.swift */; };
 		F4AE63351D83C03A0083206C /* NothingFoundCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F4AE63341D83C03A0083206C /* NothingFoundCell.xib */; };
+		F4C582E81D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F4C582E71D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		F46C97CC1D82E38400D23708 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		F46C97CE1D82E9C100D23708 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		F4AE63341D83C03A0083206C /* NothingFoundCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NothingFoundCell.xib; sourceTree = "<group>"; };
+		F4C582E71D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+DownloadingImage.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				F46C97CE1D82E9C100D23708 /* SearchResultCell.swift */,
+				F4C582E71D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -193,6 +196,7 @@
 			files = (
 				F40B633E1D82A416008AE6DB /* SearchViewController.swift in Sources */,
 				F40B633C1D82A416008AE6DB /* AppDelegate.swift in Sources */,
+				F4C582E81D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift in Sources */,
 				F46C97CF1D82E9C100D23708 /* SearchResultCell.swift in Sources */,
 				F46C97CB1D82CDB800D23708 /* SearchStore.swift in Sources */,
 			);
