@@ -21,5 +21,5 @@ class SearchStore {
 }
 
 func <(lhs: SearchStore,rhs: SearchStore) -> Bool {
-    return lhs.name.localizedStandardCompare(rhs.name) == .OrderedAscending
+    return lhs.name.localizedStandardCompare(rhs.name) == .orderedAscending
 }
