@@ -37,11 +37,11 @@ class SearchResultCell: UITableViewCell {
         if searchResult.artistName.isEmpty {
             artistNameLabel.text = "Unknown"
         } else {
-            artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName,kindForDisplay(kind: searchResult.kind))
+            artistNameLabel.text = String(format: "%@ (%@)", searchResult.artistName,searchResult.kindForDisplay())
         }
         
         artworkImageView.image = UIImage(named: "placeholder")
-        if let url = NSURL(string: searchResult.artworkURL60) {
+        if let url = URL(string: searchResult.artworkURL60) {
            downloadTask = artworkImageView.downloadingImage(url: url)
         }
         

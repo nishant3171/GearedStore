@@ -12,6 +12,8 @@
 		F40B63411D82A416008AE6DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B633F1D82A416008AE6DB /* Main.storyboard */; };
 		F40B63431D82A416008AE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B63421D82A416008AE6DB /* Assets.xcassets */; };
 		F41C91461D87B62A005CE6A2 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41C91451D87B62A005CE6A2 /* LoadingCell.xib */; };
+		F434625C1D9109BD004D982E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434625B1D9109BD004D982E /* DetailViewController.swift */; };
+		F434625E1D9114D8004D982E /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434625D1D9114D8004D982E /* DimmingPresentationController.swift */; };
 		F46C97CB1D82CDB800D23708 /* SearchStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C97CA1D82CDB800D23708 /* SearchStore.swift */; };
 		F46C97CD1D82E38400D23708 /* SearchResultCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F46C97CC1D82E38400D23708 /* SearchResultCell.xib */; };
 		F46C97CF1D82E9C100D23708 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F46C97CE1D82E9C100D23708 /* SearchResultCell.swift */; };
@@ -27,6 +29,8 @@
 		F40B63421D82A416008AE6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F40B63471D82A416008AE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41C91451D87B62A005CE6A2 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		F434625B1D9109BD004D982E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		F434625D1D9114D8004D982E /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		F46C97CA1D82CDB800D23708 /* SearchStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchStore.swift; sourceTree = "<group>"; };
 		F46C97CC1D82E38400D23708 /* SearchResultCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SearchResultCell.xib; sourceTree = "<group>"; };
 		F46C97CE1D82E9C100D23708 /* SearchResultCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
@@ -94,6 +98,8 @@
 			isa = PBXGroup;
 			children = (
 				F40B633D1D82A416008AE6DB /* SearchViewController.swift */,
+				F434625B1D9109BD004D982E /* DetailViewController.swift */,
+				F434625D1D9114D8004D982E /* DimmingPresentationController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -195,8 +201,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				F40B633E1D82A416008AE6DB /* SearchViewController.swift in Sources */,
+				F434625E1D9114D8004D982E /* DimmingPresentationController.swift in Sources */,
 				F40B633C1D82A416008AE6DB /* AppDelegate.swift in Sources */,
 				F4C582E81D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift in Sources */,
+				F434625C1D9109BD004D982E /* DetailViewController.swift in Sources */,
 				F46C97CF1D82E9C100D23708 /* SearchResultCell.swift in Sources */,
 				F46C97CB1D82CDB800D23708 /* SearchStore.swift in Sources */,
 			);
