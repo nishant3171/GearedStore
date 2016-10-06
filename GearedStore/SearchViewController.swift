@@ -24,6 +24,8 @@ class SearchViewController: UIViewController {
     var hasSearched = false
     var isLoading = false
     var dataTask: URLSessionDataTask?
+    var landscapeViewController: LandscapeViewController?
+    
     
     struct tableViewCellIdentifiers {
         static let searchResultCell = "SearchResultCell"
@@ -53,9 +55,58 @@ class SearchViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
-}
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.willTransition(to: newCollection, with: coordinator)
+        
+        switch newCollection.verticalSizeClass {
+        case .compact:
+            showLandscapeViewWithCoordinator(coordinator: coordinator)
+        case .regular, .unspecified:
+            hideLandscapeViewWithCoordinator(coordinator: coordinator)
+        }
+    }
+    
+    func showLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        
+        precondition(landscapeViewController == nil)
+        landscapeViewController = storyboard?.instantiateViewController(withIdentifier: "LandscapeViewController") as? LandscapeViewController
+        
+        if let controller = landscapeViewController {
+            controller.searchResults = searchResults
+            controller.view.frame = view.bounds
+            controller.view.alpha = 0.0
+            
+            view.addSubview(controller.view)
+            addChildViewController(controller)
+            
+            coordinator.animate(alongsideTransition: { (_) in
+                controller.view.alpha = 1.0
+                self.searchBar.resignFirstResponder()
+                if self.presentedViewController != nil {
+                    self.dismiss(animated: true, completion: nil)
+                }
+                }, completion: { (_) in
+                controller.didMove(toParentViewController: self)
+            })
+        }
+    }
+    
+    func hideLandscapeViewWithCoordinator(coordinator: UIViewControllerTransitionCoordinator) {
+        
+        if let controller = landscapeViewController {
+            controller.didMove(toParentViewController: nil)
+            
+            coordinator.animate(alongsideTransition: { (_) in
+                controller.view.alpha = 0.0
+                }, completion: { (_) in
+                controller.view.removeFromSuperview()
+                controller.removeFromParentViewController()
+                self.landscapeViewController = nil
+            })
+            
+        }
+    }
 
     func urlWithSearchString(searchString: String, category: Int) -> NSURL {
         
@@ -204,6 +255,7 @@ func parseAudioBook(dictionary: [String: AnyObject]) -> SearchStore {
         }
         return searchResult
     }
+}
 
 //MARK: SearchBar Extension
 extension SearchViewController: UISearchBarDelegate {
@@ -229,8 +281,8 @@ extension SearchViewController: UISearchBarDelegate {
                 if let error = error as? NSError , error.code == -999 {
                     return
                 } else if let responseCode = response as? HTTPURLResponse , responseCode.statusCode == 200 {
-                    if let data = data, let dictionary = parseJson(data: data as NSData) {
-                        self.searchResults = parseDictionary(dictionary: dictionary)
+                    if let data = data, let dictionary = self.parseJson(data: data as NSData) {
+                        self.searchResults = self.parseDictionary(dictionary: dictionary)
                         self.searchResults.sort(by: <)
                         
                         DispatchQueue.main.async {
@@ -243,10 +295,10 @@ extension SearchViewController: UISearchBarDelegate {
                         self.hasSearched = false
                         self.isLoading = false
                         self.tableView.reloadData()
-                        showNetworkError(viewController: self)
+                        self.showNetworkError(viewController: self)
                     }
                 } else {
-                    print("Error \(response)")
+                    print("Error \(response).")
                 }
             })
             

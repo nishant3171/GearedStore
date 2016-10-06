@@ -76,6 +76,44 @@
             </objects>
             <point key="canvasLocation" x="36" y="463"/>
         </scene>
+        <!--Landscape View Controller-->
+        <scene sceneID="7XA-Ad-jJ5">
+            <objects>
+                <viewController storyboardIdentifier="LandscapeViewController" id="CbQ-BQ-w4E" customClass="LandscapeViewController" customModule="GearedStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nVH-uU-uDQ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wX4-Ky-YQS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Jmv-ZK-LJt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" pagingEnabled="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hER-XT-SFD">
+                                <frame key="frameInset" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="CbQ-BQ-w4E" id="ZkO-Xh-6qh"/>
+                                </connections>
+                            </scrollView>
+                            <pageControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="fCz-RF-ocq">
+                                <frame key="frameInset" minX="168" minY="315" width="39" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="pageChangedUsingPageControlWithSender:" destination="CbQ-BQ-w4E" eventType="valueChanged" id="MN8-ou-oFh"/>
+                                </connections>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="0.94999999999999996" colorSpace="calibratedWhite"/>
+                    </view>
+                    <connections>
+                        <outlet property="pageControl" destination="fCz-RF-ocq" id="5SQ-h3-p4E"/>
+                        <outlet property="scrollView" destination="hER-XT-SFD" id="YGP-7F-FeZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jKZ-0l-m1G" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="1128.4857571214393"/>
+        </scene>
         <!--Detail View Controller-->
         <scene sceneID="IL2-Rr-PhA">
             <objects>

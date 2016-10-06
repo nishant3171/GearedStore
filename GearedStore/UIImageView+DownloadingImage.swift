@@ -14,10 +14,9 @@ extension UIImageView {
         let session = URLSession.shared
         
         let downloadTask = session.downloadTask(
-            with: url as URL, completionHandler: { [weak self] url, response, error in // 2
+            with: url as URL, completionHandler: { [weak self] url, response, error in 
                 if error == nil, let url = url,
-                    // 3
-                    let data = NSData(contentsOf: url), let image = UIImage(data: data as Data) { // 4
+                    let data = NSData(contentsOf: url), let image = UIImage(data: data as Data) {
                     DispatchQueue.main.async {
                         if let strongSelf = self {
                             strongSelf.image = image

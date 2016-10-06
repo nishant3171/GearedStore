@@ -18,10 +18,16 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var kindLabel: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
     @IBOutlet weak var priceButton: UIButton!
+    
+    enum AnimationStyle {
+        case Slide
+        case Fade
+    }
 
     //MARK: Variables
     var searchResult: SearchStore!
     var downloadTask: URLSessionDownloadTask?
+    var dismissAnimationStyle = AnimationStyle.Fade
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +38,7 @@ class DetailViewController: UIViewController {
         view.addGestureRecognizer(gestureRecognizer)
         
         view.tintColor = UIColor(colorLiteralRed: 20 / 255, green: 160 / 255, blue: 160 / 255, alpha: 1.0)
+        view.backgroundColor = UIColor.clear
         popupView.layer.cornerRadius = 10.0
         
         if searchResult != nil {
@@ -51,6 +58,7 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func close() {
+        dismissAnimationStyle = .Slide
         dismiss(animated: true, completion: nil)
     }
     
@@ -96,6 +104,20 @@ class DetailViewController: UIViewController {
         if let url = URL(string: searchResult.artworkURL100) {
             downloadTask = artworkImageView.downloadingImage(url: url)
         }
+    }
+    
+    @objc(animationControllerForPresentedController:presentingController:sourceController:) func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return BounceAnimationController()
+    }
+    
+    @objc(animationControllerForDismissedController:) func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        switch dismissAnimationStyle {
+        case .Fade:
+            return FadeOutController()
+        case .Slide:
+            return SlideOutAnimationController()
+        }
+        
     }
     
 }
