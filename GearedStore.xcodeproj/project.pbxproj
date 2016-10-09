@@ -12,6 +12,8 @@
 		F40B63411D82A416008AE6DB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F40B633F1D82A416008AE6DB /* Main.storyboard */; };
 		F40B63431D82A416008AE6DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F40B63421D82A416008AE6DB /* Assets.xcassets */; };
 		F41C91461D87B62A005CE6A2 /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F41C91451D87B62A005CE6A2 /* LoadingCell.xib */; };
+		F42FF1FA1DA7447F00662F24 /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FF1F91DA7447F00662F24 /* Search.swift */; };
+		F42FF1FC1DA746F200662F24 /* CommentedOutSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = F42FF1FB1DA746F200662F24 /* CommentedOutSearch.swift */; };
 		F434625C1D9109BD004D982E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434625B1D9109BD004D982E /* DetailViewController.swift */; };
 		F434625E1D9114D8004D982E /* DimmingPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F434625D1D9114D8004D982E /* DimmingPresentationController.swift */; };
 		F45BCD2C1DA378F3000012FA /* FadeOutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F45BCD2B1DA378F3000012FA /* FadeOutController.swift */; };
@@ -34,6 +36,8 @@
 		F40B63421D82A416008AE6DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F40B63471D82A416008AE6DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F41C91451D87B62A005CE6A2 /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
+		F42FF1F91DA7447F00662F24 /* Search.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
+		F42FF1FB1DA746F200662F24 /* CommentedOutSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentedOutSearch.swift; sourceTree = "<group>"; };
 		F434625B1D9109BD004D982E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		F434625D1D9114D8004D982E /* DimmingPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DimmingPresentationController.swift; sourceTree = "<group>"; };
 		F45BCD2B1DA378F3000012FA /* FadeOutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FadeOutController.swift; sourceTree = "<group>"; };
@@ -91,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				F46C97CA1D82CDB800D23708 /* SearchStore.swift */,
+				F42FF1F91DA7447F00662F24 /* Search.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -115,6 +120,7 @@
 				F4A2A3091DA288DE0017DB8E /* BounceAnimationController.swift */,
 				F4FA2EEF1DA293F9009D3A76 /* SlideOutAnimationController.swift */,
 				F4EA397C1DA2C7A300AB11C3 /* LandscapeViewController.swift */,
+				F42FF1FB1DA746F200662F24 /* CommentedOutSearch.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -215,10 +221,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F42FF1FA1DA7447F00662F24 /* Search.swift in Sources */,
 				F40B633E1D82A416008AE6DB /* SearchViewController.swift in Sources */,
 				F434625E1D9114D8004D982E /* DimmingPresentationController.swift in Sources */,
 				F40B633C1D82A416008AE6DB /* AppDelegate.swift in Sources */,
 				F4C582E81D8B14A6001D8B47 /* UIImageView+DownloadingImage.swift in Sources */,
+				F42FF1FC1DA746F200662F24 /* CommentedOutSearch.swift in Sources */,
 				F4A2A30A1DA288DE0017DB8E /* BounceAnimationController.swift in Sources */,
 				F4EA397D1DA2C7A300AB11C3 /* LandscapeViewController.swift in Sources */,
 				F45BCD2C1DA378F3000012FA /* FadeOutController.swift in Sources */,

@@ -15,7 +15,7 @@ class LandscapeViewController: UIViewController {
     @IBOutlet weak var pageControl: UIPageControl!
     
     //MARK: Variables
-    var searchResults = [SearchStore]()
+    var search: Search!
     fileprivate var firstTime = true
     fileprivate var downloadTasks = [URLSessionDownloadTask]()
 
@@ -48,7 +48,7 @@ class LandscapeViewController: UIViewController {
         
         if firstTime {
             firstTime = false
-            tileButtons(searchResults: searchResults)
+            tileButtons(searchResults: search.searchResults)
         }
     }
     override func didReceiveMemoryWarning() {
